@@ -1,0 +1,10 @@
+global:
+  pattern: ""
+
+secretStore:
+  name: vault-backend
+  kind: ClusterSecretStore
+
+lemonadeStandSecret:
+  key: secret/data/global/lemonade-stand
+  refreshInterval: 2m0s

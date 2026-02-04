@@ -1,0 +1,74 @@
+clusterGroup:
+  name: prod
+
+  namespaces:
+    lemonade-stand:
+      labels:
+        opendatahub.io/dashboard: "true"
+        modelmesh-enabled: "false"
+    redhat-ods-operator:
+      operatorGroup: true
+      targetNamespaces: []
+    openshift-nfd:
+    nvidia-gpu-operator:
+    vault:
+    external-secrets-operator:
+      operatorGroup: true
+      targetNamespaces: []
+    external-secrets:
+
+  subscriptions:
+    rhoai:
+      name: rhods-operator
+      namespace: redhat-ods-operator
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+    nvidia:
+      name: gpu-operator-certified
+      namespace: nvidia-gpu-operator
+      source: certified-operators
+    eso:
+      name: openshift-external-secrets-operator
+      namespace: external-secrets-operator
+      channel: stable-v1
+
+  applications:
+    lemonade-stand:
+      name: lemonade-stand
+      namespace: lemonade-stand
+      repoURL: https://github.com/dminnear-rh/lemonade-stand-assistant.git
+      chartVersion: gitops-fixes
+      path: chart
+
+    dsc:
+      name: dsc
+      namespace: lemonade-stand
+      path: charts/dsc
+
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      path: charts/nfd
+
+    nvidia-config:
+      name: nvidia-config
+      namespace: nvidia-gpu-operator
+      path: charts/nvidia-config
+
+    lemonade-stand-secrets:
+      name: lemonade-stand-secrets
+      namespace: lemonade-stand
+      path: charts/lemonade-stand-secrets
+
+    vault:
+      name: vault
+      namespace: vault
+      chart: hashicorp-vault
+      chartVersion: 0.1.*
+
+    openshift-external-secrets:
+      name: openshift-external-secrets
+      namespace: external-secrets
+      chart: openshift-external-secrets
+      chartVersion: 0.0.*
