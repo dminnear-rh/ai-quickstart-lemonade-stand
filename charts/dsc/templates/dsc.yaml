@@ -31,3 +31,5 @@ spec:
       managementState: Managed
     datasciencepipelines:
       managementState: Managed
+    trustyai:
+      managementState: Managed
