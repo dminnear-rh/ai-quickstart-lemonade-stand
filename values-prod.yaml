@@ -41,14 +41,14 @@ clusterGroup:
       extraValueFiles:
         - /overrides/lemonade-stand.yaml
 
-    grafana:
-      name: grafana
-      namespace: grafana
-      repoURL: https://github.com/rh-ai-quickstart/lemonade-stand-assistant
-      chartVersion: main
-      path: grafana
-      extraValueFiles:
-        - /overrides/grafana.yaml
+    # grafana:
+    #   name: grafana
+    #   namespace: grafana
+    #   repoURL: https://github.com/rh-ai-quickstart/lemonade-stand-assistant
+    #   chartVersion: main
+    #   path: grafana
+    #   extraValueFiles:
+    #     - /overrides/grafana.yaml
 
     data-science-cluster:
       name: data-science-cluster
