@@ -2,7 +2,7 @@ clusterGroup:
   name: prod
 
   namespaces:
-    ai-quickstart-lemonade-stand:
+    lemonade-stand:
     redhat-ods-operator:
         operatorGroup: true
         targetNamespaces: []
