@@ -1,0 +1,23 @@
+clusterGroup:
+  namespaces:
+    openshift-nfd:
+    nvidia-gpu-operator:
+
+  subscriptions:
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+    nvidia:
+      name: gpu-operator-certified
+      namespace: nvidia-gpu-operator
+      source: certified-operators
+
+  applications:
+    nfd:
+      name: nfd
+      namespace: openshift-nfd
+      path: charts/nfd
+    nvidia-config:
+      name: nvidia-config
+      namespace: nvidia-gpu-operator
+      path: charts/nvidia-config

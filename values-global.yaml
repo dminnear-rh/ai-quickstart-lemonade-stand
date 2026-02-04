@@ -1,0 +1,10 @@
+global:
+  pattern: lemonade-stand
+  secretLoader:
+    disabled: true
+  device: gpu
+main:
+  clusterGroupName: prod
+  multiSourceConfig:
+    enabled: true
+    clusterGroupChartVersion: 0.9.*

@@ -1,0 +1,47 @@
+clusterGroup:
+  name: prod
+
+  namespaces:
+    ai-quickstart-lemonade-stand:
+    redhat-ods-operator:
+        operatorGroup: true
+        targetNamespaces: []
+    openshift-serverless:
+        operatorGroup: true
+        targetNamespaces: []
+    openshift-pipelines:
+    redhat-ods-applications:
+    rhoai-model-registries:
+    rhods-notebooks:
+
+  sharedValueFiles:
+    - /overrides/values-{{ $.Values.global.device }}.yaml
+    - /overrides/values-{{ $.Values.global.device }}-{{ $.Values.global.clusterPlatform }}.yaml
+
+  subscriptions:
+    serverless:
+      name: serverless-operator
+      namespace: openshift-serverless
+    servicemesh:
+      name: servicemeshoperator
+      namespace: openshift-operators
+    rhoai:
+      name: rhods-operator
+      namespace: redhat-ods-operator
+    pipelines:
+      name: openshift-pipelines-operator-rh
+
+  applications:
+    lemonade-stand:
+      name: lemonade-stand
+      namespace: lemonade-stand
+      repoURL: https://github.com/rh-ai-quickstart/lemonade-stand-assistant
+      chartVersion: main
+      path: chart
+      extraValueFiles:
+        - /overrides/lemonade-stand.yaml
+
+    data-science-cluster:
+      name: data-science-cluster
+      namespace: ai-quickstart-rag
+      path: charts/dsc
